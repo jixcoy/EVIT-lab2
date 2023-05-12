@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ Use either the Translate method or AddForce method (if using physics) to move yo
     public float xMoveInput;
     private float yMoveInput;
 
+    public GameObject projectilePrefab;
+
     private Rigidbody rb;
     
     
@@ -24,8 +27,15 @@ Use either the Translate method or AddForce method (if using physics) to move yo
     {
         rb = gameObject.GetComponent<Rigidbody>();
     }
-    
-    // Update is called once per frame
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        }
+    }
+
     void FixedUpdate()
     {
         xMoveInput = Input.GetAxisRaw("Horizontal");
