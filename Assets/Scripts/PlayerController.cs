@@ -32,7 +32,7 @@ Use either the Translate method or AddForce method (if using physics) to move yo
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, transform.position, gameObject.transform.rotation);
         }
     }
 

@@ -11,4 +11,17 @@ public class projectile : MonoBehaviour
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("wall"))
+        {
+            Destroy(gameObject);
+            Debug.Log("hit wall");
+        } else if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("hit enemy");
+        }
+    }
 }

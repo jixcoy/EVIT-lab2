@@ -9,6 +9,7 @@ public class Wander : MonoBehaviour
 {
     public float rotateMultiplier;
     public int rotateDirection;
+    public int forceValue;
     private Vector3[] rotationDirections = { Vector3.up, Vector3.down };
     private Rigidbody rb;
     
@@ -18,9 +19,6 @@ public class Wander : MonoBehaviour
         // Starts wander coroutine
         StartCoroutine(StartWander());
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 2);
-
-        
     }
 
 
@@ -35,6 +33,8 @@ public class Wander : MonoBehaviour
             rotateDirection = Random.Range(0, 2);
             
             transform.Rotate(rotationDirections[rotateDirection], 10 * rotateMultiplier);
+            rb.AddForce(transform.forward * forceValue);
+
             yield return new WaitForSeconds(1.0f);
 
         }
