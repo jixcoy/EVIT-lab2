@@ -32,8 +32,8 @@ public class Wander : MonoBehaviour
 
             rotateDirection = Random.Range(0, 2);
             
-            transform.Rotate(rotationDirections[rotateDirection], 10 * rotateMultiplier);
-            rb.AddForce(transform.forward * forceValue);
+            transform.Rotate(Vector3.up, 10 * rotateMultiplier);
+            transform.Translate(Vector3.forward * 2);
 
             yield return new WaitForSeconds(1.0f);
 
